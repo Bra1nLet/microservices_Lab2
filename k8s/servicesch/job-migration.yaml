@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: django-migrations
+spec:
+  template:
+    spec:
+      containers:
+        - name: django
+          image: bra1let/djangopp:v1.4
+          command: ['python', 'manage.py', 'migrate']
+      restartPolicy: Never
+  backoffLimit: 5

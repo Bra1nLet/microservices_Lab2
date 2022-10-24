@@ -1,0 +1,51 @@
+{% extends "base_menu.html" %}
+{% block content %}
+    <head>
+
+        <style type="text/css">
+            body {
+                background-color: #02060d;
+            }
+            #centr {
+                text-align: center;
+                margin-top: 10%;
+            }
+            #statt {
+
+                background-color: #34b832; /* Цвет фона */
+                border: 2px solid #fff; /* Белая рамка */
+                border-radius: 15px; /* Радиус скругления */
+                font-size: 1.5em;
+                height: 1em;
+            }
+            #phot {
+                max-width: 20em;
+                max-height: 20em;
+            }
+        </style>
+    </head>
+    <body>
+
+        <form id="edit_profile" method="post" enctype="multipart/form-data">
+           <h1 id="centr">Все занятия</h1>
+            {% csrf_token %}
+            {% if lessons %}
+                {% for lesson in lessons %}
+                    <div>
+                        Ученик: {{ lesson.owner }}
+                        <br>
+                        Начало занятия:
+                        {{ lesson.start_lesson }}
+                        <br>
+                        Конец занятия:
+                        {{ lesson.end_lesson }}
+                        <br>
+                        Коментарий
+                        <br>
+                        {{ lesson.comment }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </form>
+    </body>
+{% endblock %}

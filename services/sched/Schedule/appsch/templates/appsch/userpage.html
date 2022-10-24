@@ -1,0 +1,88 @@
+{% extends "base_menu.html" %}
+{% block content %}
+    <head>
+        <style type="text/css">
+            body {
+                background-color: #02060d;
+            }
+            #centr {
+                text-align: center;
+                margin-top: 10%;
+            }
+            #statt {
+
+                background-color: #34b832; /* Цвет фона */
+                border: 2px solid #fff; /* Белая рамка */
+                border-radius: 15px; /* Радиус скругления */
+                font-size: 1.5em;
+                height: 1em;
+            }
+            #phot {
+                max-width: 20em;
+                max-height: 20em;
+            }
+            #poleschedule {
+                background-color: #18191e;
+                alignment: center;
+                border-radius: 2em; /* Радиус скругления */
+            }
+            #btns {
+                text-align: center;
+                font-size: 2.5em;
+                list-style-type: none;
+            }
+            #rozkl {
+
+                font-size: 2.5em;
+                list-style-type: none;
+            }
+        </style>
+    </head>
+    <body>
+        {% for userre in usernamae %}
+            {% if userre.Account == user %}
+
+            {% endif %}
+            <div id="centr">
+                {% if userre.picture == null %}
+                    <img id="phot" src="{{  userre.picture.url }}"  >
+                {% endif %}
+            <h1> {{ userre.Last_name }} {{ userre.First_name }} </h1>
+            </div>
+            <p>{{ userre.About_me|linebreaks  }}</p>
+            <span id="statt">{{ userre.stat.status }} </span>
+
+        <h1 id="centr"> График занятий </h1>
+        <div id="poleschedule">
+            <ul id="btns">
+                <tr> пн </tr>
+                <tr> вт </tr>
+                <tr> ср </tr>
+                <tr> чт </tr>
+                <tr> пт </tr>
+                <tr> сб </tr>
+                <tr> вс </tr>
+            </ul>
+            <ul id="rozkl">
+                <li> 8:00 </li>
+                <li> 8:30 </li>
+                <li> 9:00 </li>
+                <li> 9:30 </li>
+                <li> 10:00 </li>
+                <li> 10:30 </li>
+                <li> 11:00 </li>
+                <li> 11:30 </li>
+                <li> 12:00 </li>
+                <li> 12:30 </li>
+                <li> 13:00 </li>
+                <li> 13:30 </li>
+                <li> 14:00 </li>
+                <li> 14:30 </li>
+            </ul>
+        </div>
+        {% if userre.stat.status == "Инструктор"   %}
+            <button class="w-100 btn btn-lg btn-primary" type="submit" value="OK"> Назначить вождение </button>
+        {% endif %}
+       {% endfor %}
+    </body>
+{% endblock %}

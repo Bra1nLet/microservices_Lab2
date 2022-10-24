@@ -1,0 +1,62 @@
+{% extends "base_menu.html" %}
+{% block content %}
+    <head>
+
+        <style type="text/css">
+            body {
+                background-color: #02060d;
+            }
+            #centr {
+                text-align: center;
+                margin-top: 10%;
+            }
+            #statt {
+
+                background-color: #34b832; /* Цвет фона */
+                border: 2px solid #fff; /* Белая рамка */
+                border-radius: 15px; /* Радиус скругления */
+                font-size: 1.5em;
+                height: 1em;
+            }
+            #phot {
+                max-width: 20em;
+                max-height: 20em;
+            }
+        </style>
+    </head>
+    <body>
+
+        <form id="edit_profile" method="post" enctype="multipart/form-data">
+           <h1 id="centr">Редактировать профиль</h1>
+            {% csrf_token %}
+            {% for myacc in myaccount %}
+             <div class="form-floating">
+                <h2>Логин: {{ user.username }}</h2>
+                <h2>Почта: {{ user.email }}</h2>
+            </div>
+
+            <div class="form-floating">
+                <h2>Имя</h2>
+                <input type="text" class="form-control" id="floatingInput" value="{{ myacc.First_name }}"  name="firstname">
+            </div>
+               <div class="form-floating">
+                <h2>Фамилия</h2>
+                <input type="text" class="form-control" id="floatingInput" value="{{ myacc.Last_name }}"  name="lastname">
+            </div>
+            <div class="form-outline">
+                <h2>О себе</h2>
+                <textarea class="form-control" id="textAreaExample1" rows="4" name="aboutme"> {{ myacc.About_me }}</textarea>
+            </div>
+            <div class="input-group mb-3">
+                <div class="file-upload">
+                    <h2>Фотография</h2>
+                    {{ form.picture }}
+                </div>
+            </div>
+            <div class="checkbox mb-3">
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" value="OK"> Подтвердить изменения </button>
+            {% endfor %}
+        </form>
+    </body>
+{% endblock %}
