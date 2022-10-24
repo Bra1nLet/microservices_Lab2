@@ -19,6 +19,6 @@ git clone https://github.com/Bra1nLet/microservices_Lab2.git
 *kubectl apply -f job-migration.yaml*
 
 7. Після міграції, потрібно добавити усі інщі файли. (Повинен працювати інгресс)
-8. Потрібно дізнатись minikybe ip
+8. Потрібно дізнатись minikube ip
 9. Переходимо за посиланням http://(minikube ip):80
 10. Після цього можна перевірити працездатність сервісу, зареєструвавшись.
